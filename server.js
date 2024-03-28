@@ -4,7 +4,8 @@ const socketio = require('socket.io');
 const http = require('http');
 const server = http.createServer(app);
 const io = socketio(server)
-
+const port = process.env.PORT || 4040
+ 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -17,6 +18,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(4040, () => {
+server.listen(port, () => {
     console.log(`server is running on http://localhost:4040`)
 })
